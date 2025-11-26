@@ -24,11 +24,12 @@ High - Highlights with a key 🔑 emoji OR My reactions OR highlighted text with
 Highest - My reactions with key 🔑 emoji (see identification above)
 
 ## Core Tasks  
-1. Create a three-sentence summary of the overall note.
-2. Create up to 5 bullets based on my highlights and reactions.
-3. If you are creating a bullet for a reaction, quote it verbatim. Also add context as a separate sentence based on the associated highlight or the paragraph or section that I'm reacting to. 
-4. If you are creating a bullet for a highlight, quote it verbatim unless it is more than 3 sentences long. If it is more than 3 sentences long, create an extractive summary that is 3 sentences long.
-5. Sort the bullets based on Signal Strength (see above). 
+1. Read the Note using using MCP
+2. Create a three-sentence summary of the overall note.
+3. Create up to 5 bullets based on my highlights and reactions.
+4. If you are creating a bullet for a reaction, quote it verbatim. Also add context as a separate sentence based on the associated highlight or the paragraph or section that I'm reacting to. 
+5. If you are creating a bullet for a highlight, quote it verbatim unless it is more than 3 sentences long. If it is more than 3 sentences long, create an extractive summary that is 3 sentences long.
+6. Sort the bullets based on Signal Strength (see above). 
   
 ## Format  
 I'm looking for a three-sentence description of the overall note followed by up to five bullets. 
