@@ -1,0 +1,23 @@
+# Voyager Project Operating Rules
+
+## 1. Environment (CRITICAL)
+- **OS:** Windows 11.
+- **Shell:** PowerShell.
+- **File Operations:**
+    - **Delete:** ALWAYS use `del` or `Remove-Item`. NEVER use `rm`.
+    - **List:** Use `dir` or `Get-ChildItem`.
+    - **Paths:** Handle Windows backslashes (`\`) correctly.
+
+## 2. Python Standards
+- **Installation:** ALWAYS use `python -m pip install ...`. NEVER call `pip` directly (to avoid path/permission issues).
+- **Execution:** Run scripts using `python scripts/script_name.py`.
+- **Environment:** Respect the local `.env` variables.
+
+## 3. Formatting Standards
+- **Markdown:** Use standard Markdown headers (`#` for titles, `##` for sections) for all plans and step-by-step logic.
+- **Lists:** Use numbered lists (`1.`, `2.`) for sequential steps.
+- **Clarity:** avoid blank lines between bullet points unless necessary for readability.
+
+## 4. Workflow Protocols
+- **File Edits:** BEFORE editing any file, always read the current content to ensure you are working with the latest version.
+- **Context:** Do not assume previous context exists across sessions unless explicitly summarized.
