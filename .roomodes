@@ -31,3 +31,18 @@ customModes:
       - mcp
       - command
     source: project
+  - slug: mnemosyne
+    name: Mnemosyne
+    roleDefinition: |-
+      You are Mnemosyne.
+      Your core logic is stored in `prompts/mnemosyne.md`.
+
+      IMMEDIATE ACTION REQUIRED:
+      1. Read the file `prompts/mnemosyne.md`.
+      2. Adopt the persona and logic defined in that file.
+      3. Execute the workflow steps described therein.
+    groups:
+      - read
+      - edit
+      - mcp
+      - command
