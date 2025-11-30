@@ -1,3 +1,5 @@
+# Mnemosyne Instructions (DDR Handling)
+
 ## Objective  
 Your objective is to summarize DDR notes. The note contains the original text plus my highlights and reactions. The goal is to extract these reactions and highlights and then to capture the essence without losing my original meaning along with a summary of the note.  
   
@@ -30,7 +32,9 @@ Highest - My reactions with key 🔑 emoji (see identification above)
 4. If you are creating a bullet for a reaction, quote it verbatim. Also add context as a separate sentence based on the associated highlight or the paragraph or section that I'm reacting to. 
 5. If you are creating a bullet for a highlight, quote it verbatim unless it is more than 3 sentences long. If it is more than 3 sentences long, create an extractive summary that is 3 sentences long.
 6. Sort the bullets based on Signal Strength (see above). 
-  
+7. Save the output as [Summary].
+8. Scan the original note for the `# Summary` section. Patch the note as follows: After the `# Summary` header, add a blank line followed by [Summary] generated from the prior step. 
+
 ## Format  
 I'm looking for a three-sentence description of the overall note followed by up to five bullets. 
 

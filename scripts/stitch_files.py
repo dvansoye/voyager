@@ -3,13 +3,39 @@ import os
 import sys
 from dotenv import load_dotenv
 
+def find_file_in_vault(filename, vault_root):
+    search_paths = [
+        vault_root,
+        os.path.join(vault_root, "Zettelkasten"),
+        os.path.join(vault_root, "Zettelkasten", "Zettele"),
+        os.path.join(vault_root, "Zettelkasten", "Tagebuch"),
+        os.path.join(vault_root, "Zettelkasten", "Git-Obsidian", "status-reports")
+    ]
+
+    target_path = None
+    for folder in search_paths:
+        candidate = os.path.join(folder, filename)
+        if os.path.exists(candidate):
+            target_path = candidate
+            break
+    
+    if not target_path:
+        for root, dirs, files in os.walk(vault_root):
+            if '.git' in dirs:
+                dirs.remove('.git')
+                
+            if filename in files:
+                target_path = os.path.join(root, filename)
+                break
+    return target_path
+
 def main():
     load_dotenv()
     # Retrieve the Vault Path
     vault_root = os.getenv('OBSIDIAN_VAULT_PATH')
     
     if not vault_root:
-        sys.stderr.write("Error: OBSIDIAN_VAULT_PATH environment variable not set.\n")
+        sys.stderr.buffer.write("Error: OBSIDIAN_VAULT_PATH environment variable not set.\n".encode('utf-8'))
         sys.exit(1)
 
     parser = argparse.ArgumentParser(description="Stitch multiple files from the Obsidian Vault into a single output file.")
@@ -25,32 +51,18 @@ def main():
             if args.header_file:
                 # We still check locally for the template since it lives in the Voyager repo
                 if not os.path.exists(args.header_file):
-                    sys.stderr.write(f"Warning: Header file '{args.header_file}' not found. Skipping.\n")
+                    sys.stderr.buffer.write(f"Warning: Header file '{args.header_file}' not found. Skipping.\n".encode('utf-8'))
                 else:
                     with open(args.header_file, 'r', encoding='utf-8') as header_file:
                         outfile.write(header_file.read())
                         outfile.write("\n\n")
 
             # --- BODY PROCESSING (Strictly Vault) ---
-            for input_path in args.inputs:
-                
-                # 1. Smart Path Cleaning
-                # If the Agent passed "Zettelkasten\Tagebuch\...", we want to strip "Zettelkasten\"
-                # because it is already in the vault_root.
-                vault_name = os.path.basename(vault_root) # e.g., "Zettelkasten"
-                clean_input = input_path
-                
-                # Check if input starts with the vault name
-                if input_path.startswith(vault_name + os.sep) or input_path.startswith(vault_name + "/"):
-                    # Strip the vault name and separator
-                    clean_input = input_path[len(vault_name)+1:]
+            for input_filename in args.inputs:
+                target_file_path = find_file_in_vault(input_filename, vault_root)
 
-                # 2. Construct the Absolute Path
-                target_file_path = os.path.join(vault_root, clean_input)
-
-                # 3. Read the file
-                if not os.path.exists(target_file_path):
-                    sys.stderr.write(f"Warning: File '{target_file_path}' not found in Vault. Skipping.\n")
+                if not target_file_path:
+                    sys.stderr.buffer.write(f"Warning: File '{input_filename}' not found in Vault. Skipping.\n".encode('utf-8'))
                     continue
                 
                 try:
@@ -58,16 +70,16 @@ def main():
                         file_content = infile.read()
                         
                     if file_content:
-                        outfile.write(f"\n--- [{os.path.basename(input_path)}] ---\n")
+                        outfile.write(f"\n--- [{os.path.basename(input_filename)}] ---\n")
                         outfile.write(file_content)
                         outfile.write("\n") # Ensure a newline after each file's content
                         
                 except Exception as e:
-                    sys.stderr.write(f"Warning: Could not read file '{target_file_path}': {e}. Skipping.\n")
+                    sys.stderr.buffer.write(f"Warning: Could not read file '{target_file_path}': {e}. Skipping.\n".encode('utf-8'))
                     continue
 
     except Exception as e:
-        sys.stderr.write(f"Error: {e}\n")
+        sys.stderr.buffer.write(f"Error: {e}\n".encode('utf-8'))
         sys.exit(1)
 
 if __name__ == "__main__":
