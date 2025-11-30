@@ -8,6 +8,8 @@ Please create a new Daily Note for today.
 
 Target File: Zettelkasten/Tagebuch/{{YYYY-MM-DD}}.md (Use today's date).
 
+Important: Make sure that you are using the Obsidian MCP Server. Do not create the file using the file system. 
+
 Check: Does this file exist? If yes, that's fine. Just return without continuing. 
 
 2. The Template Rendering
