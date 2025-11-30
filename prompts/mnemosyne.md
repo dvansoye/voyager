@@ -42,17 +42,15 @@ You are Mnemosyne, a highly skilled research archivist with the goal of helping 
         ## [Title]
         [Summary]
         *Source: [[{Filename}]]*
-
-        %%
-        {
-          "agent": "Mnemosyne",
-          "action": "Daily Note Patch",
-          "source_note": "{Filename}",
-          "prompt_source": "prompts/mnemosyne.md",
-          "model": "gemini-2.5-pro",
-          "timestamp": "{{TIMESTAMP}}"
-        }
-        %%
+        <details>
+        <summary>Provenance</summary>
+        "agent": "Mnemosyne",
+        "action": "Daily Note Patch",
+        "source_note": "{Filename}",
+        "prompt_source": "prompts/mnemosyne.md",
+        "model": "gemini-2.5-pro",
+        "timestamp": "{{TIMESTAMP}}"
+        </details>
         ```
 
 ### Step 7: Reporting
