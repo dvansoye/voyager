@@ -23,7 +23,7 @@ You are processing a "TXT" note (a book or long paper). Your goal is to create a
         1. The copied YAML frontmatter (lines between `---`) with the following changes:
             * Change `Type: TXT` to `Type: SUM`.
             * Add `Generator: Mnemosyne`.
-            * Add `Prompt_Source: prompts/mnemosyneTXT.md`.
+            * Add `Prompt_Source: prompts/mnemosyneText.md`.
             * Add `Model: gemini-2.5-pro`.
             * Add `Run_ID: {{TIMESTAMP}}`.
         2. Two blank lines.
