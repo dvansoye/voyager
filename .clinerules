@@ -21,3 +21,5 @@
 ## 4. Workflow Protocols
 - **File Edits:** BEFORE editing any file, always read the current content to ensure you are working with the latest version.
 - **Context:** Do not assume previous context exists across sessions unless explicitly summarized.
+## 5. Date/Time Handling
+- **Local Time Zone:** ALWAYS convert any date or time references to the user's local time zone (America/Los_Angeles, UTC-8:00) for all operations (e.g., daily notes, summarized tags). Do NOT use UTC for date-sensitive actions.
